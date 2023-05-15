@@ -40,5 +40,18 @@ Petite intro installation
 Copier le script dans le répertoire où sont vos projets FASTAPI
 ouvrir git bash (clic droit sur le répertoire projet => "git bash here"
 lancé le script => ./create_project_env_fastapi.ssh nom_du_projet
+vscode doit se lancé en automatique sur le projet
+Une fois le script Vscode
+killer toutes les session terminal
+Sélectionner le fichier main.py
+ouvrer une nouvelle session terminal (tester avec git bash sous vscode)
+(.venv)  doit apparaitre dans le prompt du terminal
+
+Pour utliser git bash sur vscode par defaut
+Ctrl+shift+p
+Taper terminal
+Sélectionner terminal "select default profile"
+Cliquer sur "Git bash" dans la liste
+
 ```
 
