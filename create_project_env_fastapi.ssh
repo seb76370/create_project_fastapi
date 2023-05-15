@@ -1,0 +1,64 @@
+#!/bin/bash
+
+
+# Vérifier si l'argument $1 est fourni
+if [ -z "$1" ]
+then
+  echo "Usage: $0 <directory>"
+  exit 1
+fi
+
+NameProject=$1
+
+# Créer un répertoire avec le nom fourni en argument
+mkdir "$1"
+
+#position dans le directory
+cd "$1"
+
+echo "******************************"
+echo "Installing virtualenv..."
+echo "******************************"
+pip install virtualenv
+
+echo "******************************"
+echo "Creating virtual environment..."
+echo "******************************"
+virtualenv .venv
+
+echo "******************************"
+echo "Activating virtual environment..."
+echo "******************************"
+source .venv/Scripts/activate
+
+echo "******************************"
+echo "Install FASTAPI..."
+echo "******************************"
+pip install fastapi
+
+
+echo "******************************"
+echo "Install UVICORN..."
+echo ******************************
+pip install "uvicorn[standard]"
+
+echo "******************************"
+echo "creation du fichier principale"
+echo "******************************"
+
+touch main.py
+
+echo "from typing import Union" >> main.py
+echo "from fastapi import FastAPI" >> main.py
+echo "app = FastAPI()" >> main.py
+echo "@app.get('/')" >> main.py
+echo "def read_root():" >> main.py
+echo "    return {'Hello': 'World'}" >> main.py
+echo "@app.get('/items/{item_id}')" >> main.py
+echo "def read_item(item_id: int, q: Union[str, None] = None):" >> main.py
+echo "    return {'item_id': item_id, 'q': q}" >> main.py
+
+pip freeze >requirments.txt
+
+echo Now enjoy !...
+code .
